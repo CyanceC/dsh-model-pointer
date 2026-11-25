@@ -1,0 +1,83 @@
+{
+  "name": "dsh-model-pointer",
+  "type": "module",
+  "version": "0.1.0",
+  "engines": {
+    "dsh": "^0.2.2-alpha.2"
+  },
+  "description": "Standalone DSH plugin to look up any available model (and reasoning effort) using the /model popup mechanic and insert a canonical model pointer into your chat message.",
+  "author": "Cyance",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cyance/dsh-model-pointer.git"
+  },
+  "homepage": "https://github.com/Cyance/dsh-model-pointer#readme",
+  "bugs": {
+    "url": "https://github.com/Cyance/dsh-model-pointer/issues"
+  },
+  "keywords": [
+    "dsh",
+    "plugin",
+    "dsh-plugin",
+    "models",
+    "model-pointer",
+    "reasoning-effort",
+    "cyance"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": "./dist/client.cjs",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "cordis.patch.yml",
+    "icon.svg",
+    "docs",
+    "dist"
+  ],
+  "dsh": {
+    "icon": "./icon.svg",
+    "detail": "./docs/DETAIL.md",
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-client-ui-commands",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-input-trigger"
+      ],
+      "platform": "web"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-llm": "*"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.0.5-alpha.1",
+    "@deepseek-ai/dsh-llm": "0.2.1-alpha.1",
+    "@types/node": "^24.0.0",
+    "tsdown": "^0.21.10",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}
